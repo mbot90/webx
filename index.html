@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DareDevil | Accept the Challenge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Glitch Background Canvas -->
+    <canvas id="glitchCanvas"></canvas>
+    
+    <!-- Neon Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation -->
+    <nav class="cyber-nav">
+        <div class="logo glitch" data-text="DareDevil">DareDevil</div>
+        <div class="nav-toggle" id="navToggle">☠</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="nav-link glitch-link">Home</a></li>
+            <li><a href="#dares" class="nav-link glitch-link">Dares</a></li>
+            <li><a href="#leaderboard" class="nav-link glitch-link">Leaderboard</a></li>
+            <li><a href="#profile" class="nav-link glitch-link">Profile</a></li>
+            <li><a href="#submit" class="nav-link glitch-link">Submit</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <h1 class="hero-title glitch" data-text="DO YOU DARE?">DO YOU DARE?</h1>
+            <p class="hero-subtitle">Join <span class="counter" data-target="5000">0</span>+ daredevils worldwide</p>
+            <button id="randomDareBtn" class="dare-button glitch-btn">
+                <span class="btn-text">GET RANDOM DARE</span>
+                <span class="btn-icon">⚡</span>
+            </button>
+            <div id="dareDisplay" class="dare-display"></div>
+        </section>
+
+        <!-- Dare Gallery -->
+        <section id="dares" class="dare-gallery">
+            <h2 class="section-title glitch" data-text="DARE GALLERY">DARE GALLERY</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="easy">EASY</button>
+                <button class="filter-btn" data-filter="extreme">EXTREME</button>
+                <button class="filter-btn" data-filter="social">SOCIAL</button>
+                <button class="filter-btn" data-filter="food">FOOD</button>
+            </div>
+            <div class="dares-container" id="daresContainer">
+                <!-- Dare cards will be inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Leaderboard -->
+        <section id="leaderboard" class="leaderboard-section">
+            <h2 class="section-title glitch" data-text="LEADERBOARD">LEADERBOARD</h2>
+            <div class="leaderboard-container">
+                <div class="leaderboard-header">
+                    <span>RANK</span>
+                    <span>USER</span>
+                    <span>DARES</span>
+                    <span>POINTS</span>
+                </div>
+                <div class="leaderboard-content" id="leaderboardContent">
+                    <!-- Leaderboard entries will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="profile-section">
+            <h2 class="section-title glitch" data-text="YOUR PROFILE">YOUR PROFILE</h2>
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="avatar glitch-avatar"></div>
+                    <h3 class="username">AnonymousDaredevil</h3>
+                    <div class="courage-meter">
+                        <div class="meter-label">COURAGE LEVEL</div>
+                        <div class="meter-bar">
+                            <div class="meter-fill" style="width: 65%;"></div>
+                            <div class="meter-text">65%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="badges-container">
+                    <h4>YOUR BADGES</h4>
+                    <div class="badges-grid">
+                        <div class="badge-item">
+                            <img src="assets/images/badge1.svg" alt="Newbie Badge" class="badge-icon">
+                            <span class="badge-name">Newbie</span>
+                        </div>
+                        <div class="badge-item">
+                            <img src="assets/images/badge2.svg" alt="Risk Taker Badge" class="badge-icon">
+                            <span class="badge-name">Risk Taker</span>
+                        </div>
+                        <div class="badge-item locked">
+                            <div class="badge-icon"><i class="fas fa-lock"></i></div>
+                            <span class="badge-name">???</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Submit Dare Section -->
+        <section id="submit" class="submit-section">
+            <h2 class="section-title glitch" data-text="SUBMIT A DARE">SUBMIT A DARE</h2>
+            <form id="dareForm" class="dare-form">
+                <div class="form-group">
+                    <label for="dareText" class="form-label">YOUR DARE</label>
+                    <textarea id="dareText" class="form-input" placeholder="Describe your dare..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">DIFFICULTY</label>
+                    <div class="difficulty-slider">
+                        <input type="range" id="difficultySlider" min="1" max="5" value="3">
+                        <div class="slider-labels">
+                            <span>Easy</span>
+                            <span>Medium</span>
+                            <span>Extreme</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dareCategory" class="form-label">CATEGORY</label>
+                    <select id="dareCategory" class="form-input">
+                        <option value="social">Social</option>
+                        <option value="food">Food</option>
+                        <option value="physical">Physical</option>
+                        <option value="creative">Creative</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-button glitch-btn">
+                    <span class="btn-text">SUBMIT DARE</span>
+                    <span class="btn-icon">🚀</span>
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="cyber-footer">
+        <div class="footer-content">
+            <div class="footer-logo glitch" data-text="DareDevil">DareDevil</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Terms</a>
+                <a href="#" class="footer-link">Safety</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Audio Elements -->
+    <audio id="glitchSound" src="assets/sounds/glitch.wav"></audio>
+    <audio id="acceptSound" src="assets/sounds/accept.wav"></audio>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
